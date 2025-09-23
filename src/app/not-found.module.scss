@@ -1,0 +1,81 @@
+.nf {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px 0;
+}
+
+.nf__wrap {
+  text-align: center;
+  margin: 0 auto;
+  padding: var(--padding-for-container);
+}
+
+.nf__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 16px;
+  border-radius: 16px;
+  background: var(--primary);
+  color: var(--white, #fff);
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: 1px;
+  user-select: none;
+}
+
+.nf__title {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.nf__text {
+  margin: 0 auto 20px;
+  color: rgb(72, 72, 72);
+  font-size: 15px;
+}
+
+.nf__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nf__btn-primary,
+.nf__btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.nf__btn-primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.nf__btn-primary:hover {
+  transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf__btn-primary,
+  .nf__btn-ghost {
+    transition: none;
+  }
+}
