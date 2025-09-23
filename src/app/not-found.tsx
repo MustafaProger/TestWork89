@@ -8,7 +8,7 @@ export default function NotFound() {
         <div className={styles["nf__wrap"]}>
           <div className={styles["nf__badge"]}>404</div>
 
-          <h1 className={styles["nf__title"]}>Page not found</h1>
+          <div className={styles["nf__title"]}>Page not found</div>
           <p className={styles["nf__text"]}>
             It looks like this page does not exist yet. We are already working on it —
             <strong> coming soon!</strong>

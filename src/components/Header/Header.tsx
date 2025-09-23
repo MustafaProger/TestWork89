@@ -9,7 +9,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonIcon from "@mui/icons-material/Person";
 
-import type { HeaderTopLinks, HeaderBottomLinks } from "./type";
+import type { HeaderTopLinks, HeaderBottomLinks } from "./types";
 
 const headerTopLinks: HeaderTopLinks[] = [
   { kind: "tel", icon: <PhoneIcon />, text: "+7 777 777 777", href: "tel:+7777777777" },

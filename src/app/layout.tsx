@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="ru" className={montserrat.className}>
       <body>
         <Header />
-        <div className="container">{children}</div>
+        <div className="container" style={{paddingTop: 110}}>{children}</div>
       </body>
     </html>
   );

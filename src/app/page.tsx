@@ -1,3 +1,9 @@
+import { ProductsContainer } from "@/components/ProductCard/ProductCardContainer";
+
 export default function Home() {
-  return <div></div>;
+  return (
+    <div>
+      <ProductsContainer />
+    </div>
+  );
 }

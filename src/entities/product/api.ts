@@ -1,0 +1,27 @@
+import { Product } from "@/types/types";
+import { api } from "../../shared/api/client";
+
+type GetProductsParams = {
+  limit?: number;
+  select?: string[];
+};
+
+type GetProductsResponse = {
+  products: Product[];
+  limit: number;
+  skip: number;
+  total: number;
+};
+
+export async function getProducts(params: GetProductsParams) {
+  const { limit, select } = params;
+
+  const query = {
+    ...(limit ? { limit } : {}),
+    ...(select && select.length ? { select: select.join(",") } : {}),
+  };
+
+  const res = await api.get<GetProductsResponse>("/products", { params: query });
+
+  return { products: res.data.products };
+}

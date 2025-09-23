@@ -1,5 +1,5 @@
 .nf {
-  height: 100vh;
+  height: calc(100vh - 110px);
   display: grid;
   place-items: center;
   padding: 24px 0;
