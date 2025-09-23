@@ -1,50 +1,74 @@
 "use client";
 
-import React from "react";
-import style from "./Header.module.scss";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import styles from "./Header.module.scss";
 
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
-import LocationPinIcon from "@mui/icons-material/LocationPin";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonIcon from "@mui/icons-material/Person";
 
-interface HeaderTopLink {
-  icon: React.ReactNode;
-  text: string;
-  href?: string;
-  onClick?: () => void;
-}
+import type { HeaderTopLinks, HeaderBottomLinks } from "./type";
 
-const headerTopLinks: HeaderTopLink[] = [
-  { icon: <PhoneIcon />, text: "+7 777 777 777", href: "tel:+7777777777" },
-  { icon: <EmailIcon />, text: "example@gmail.com", href: "mailto:example@gmail.com" },
-  { icon: <LocationPinIcon />, text: "Street 12, house 3", href: "/contacts" },
-  { icon: <PersonIcon />, text: "Login", onClick: () => console.log("Открыть модалку логина") },
+const headerTopLinks: HeaderTopLinks[] = [
+  { kind: "tel", icon: <PhoneIcon />, text: "+7 777 777 777", href: "tel:+7777777777" },
+  {
+    kind: "mail",
+    icon: <EmailIcon />,
+    text: "example@gmail.com",
+    href: "mailto:example@gmail.com",
+  },
+  { kind: "address", icon: <LocationOnIcon />, text: "Street 12, house 3", href: "/contacts" },
+  { kind: "login", icon: <PersonIcon />, text: "Login", href: "/login" },
+];
+
+const headerBottomLinks: HeaderBottomLinks[] = [
+  { label: "Home", href: "/" },
+  { label: "Hot Deals", href: "/hot-deals" },
+  { label: "Categories", href: "/categories" },
+  { label: "Laptops", href: "/laptops" },
+  { label: "Smartphones", href: "/smartphones" },
+  { label: "Camera", href: "/camera" },
 ];
 
 export default function Header() {
+  const pathname = usePathname();
+
   return (
-    <header className="header">
-      <div className={style["header__top"]}>
-        <ul className={style["header__links"]}>
-          {headerTopLinks.map(({ icon, text, href, onClick }, i) => (
-            <li key={i} className={style["header__link"]}>
-              {href ? (
-                <a href={href} className={style["header__link-anchor"]}>
-                  <span className={style["header__link-icon"]}>{icon}</span>
-                  <span className={style["header__link-text"]}>{text}</span>
-                </a>
-              ) : (
-                <button onClick={onClick} className={style["header__link-button"]}>
-                  <span className={style["header__link-icon"]}>{icon}</span>
-                  <span className={style["header__link-text"]}>{text}</span>
-                </button>
-              )}
+    <header className={styles.header}>
+      <div className={styles["header__top"]}>
+        <ul className={styles["header__links--top"]}>
+          {headerTopLinks.map(({ icon, text, href }, i) => (
+            <li key={i} className={styles["header__link"]}>
+              <Link href={href} className={styles["header__link-anchor"]}>
+                <span className={styles["header__link-icon"]}>{icon}</span>
+                <span className={styles["header__link-text"]}>{text}</span>
+              </Link>
             </li>
           ))}
         </ul>
       </div>
-      <div className="header__bottom"></div>
+
+      <div className={styles["header__bottom"]}>
+        <ul className={styles["header__links--bottom"]}>
+          <li className={styles["header__logo"]}>
+            <Link href="/">AbeloHost Shop</Link>
+          </li>
+          {headerBottomLinks.map(({ label, href }) => (
+            <li key={href}>
+              <Link
+                href={href}
+                className={`${styles["header__bottom-link"]} ${
+                  pathname === href ? styles["header__bottom-link--active"] : ""
+                }`}
+              >
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </header>
   );
 }
