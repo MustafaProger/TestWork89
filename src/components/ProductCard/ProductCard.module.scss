@@ -1,10 +1,10 @@
-.card {
+.product__wrapper {
   display: flex;
   flex-direction: column;
   background: var(--white);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 10px rgb(0 0 0 / 6%);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -12,11 +12,11 @@
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 16px rgb(0 0 0 / 10%);
   }
 }
 
-.thumbnail {
+.product__thumbnail {
   width: 100%;
   aspect-ratio: 1 / 1;
   background: #f9f9f9;
@@ -28,25 +28,25 @@
   }
 }
 
-.info {
+.product__info {
   padding: 12px;
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.title {
+.product__title {
   font-size: 16px;
   font-weight: 600;
   margin: 0;
 }
 
-.category {
+.product__category {
   font-size: 14px;
   color: #666;
 }
 
-.price {
+.product__price {
   font-size: 15px;
   font-weight: bold;
   color: var(--primary);

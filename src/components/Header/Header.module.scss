@@ -1,7 +1,4 @@
-:root {
-  --height-top: 50px;
-  --height-bottom: 60px;
-}
+@import "@/styles/mixins";
 
 .header {
   position: fixed;
@@ -76,12 +73,11 @@
 .header__bottom {
   height: var(--height-bottom);
   background: var(--white);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgb(0 0 0 / 10%);
 }
 
 .header__logo a {
-  font-weight: bold;
-  font-size: 20px;
+  @include logo;
 }
 
 .header__links--bottom {
@@ -95,14 +91,14 @@
   gap: 16px;
   list-style-type: none;
 
-  li:first-child {
-    margin-right: auto;
-  }
-
   li {
     transition:
       color 0.3s ease,
       transform 0.3s ease;
+  }
+
+  li:first-child {
+    margin-right: auto;
   }
 
   li:hover:not(:first-child) {

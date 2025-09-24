@@ -1,0 +1,85 @@
+@import '@/styles/mixins';
+
+.login {
+  min-height: var(--min-height-for-page);
+  display: grid;
+  place-items: center;
+  padding: 24px 0;
+}
+
+.login__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 700px;
+  width: 100%;
+  min-width: 300px;
+  background: #f9f9f9;
+  border-radius: 16px;
+  padding: 30px;
+}
+
+.login__title {
+  margin: 0 0 20px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.form {
+  display: grid;
+  gap: 14px;
+}
+
+.form__field {
+  display: grid;
+  gap: 6px;
+}
+
+.form__password-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.form__input {
+  height: 42px;
+  border: 1px solid rgb(0 0 0 / 1%);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 15px;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  background: #fff;
+
+  &:focus {
+    border-color: rgb(0 0 0 / 15%);
+  }
+}
+
+.form__eye {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--primary);
+  cursor: pointer;
+  transition:
+    transform 0.1s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    background: rgb(1 115 231 / 8%);
+  }
+}
+
+.form__btn {
+  @include button;
+}

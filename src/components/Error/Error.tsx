@@ -3,11 +3,11 @@ import styles from "./Error.module.scss";
 
 export default function Error() {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.box}>
-        <AlertCircle className={styles.icon} />
-        <h2 className={styles.title}>Error</h2>
-        <p className={styles.text}>Something went wrong</p>
+    <div className={styles.error__wrapper}>
+      <div className={styles.error__box}>
+        <AlertCircle className={styles.error__icon} />
+        <h2 className={styles.error__title}>Error</h2>
+        <p className={styles.error__text}>Something went wrong</p>
       </div>
     </div>
   );

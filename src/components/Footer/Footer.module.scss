@@ -1,0 +1,48 @@
+@import '@styles/mixins';
+
+.footer {
+  position: relative;
+  z-index: 9;
+  background-color: var(--primary);
+  color: var(--white);
+  width: 100%;
+}
+
+.footer__links {
+  max-width: var(--max-width);
+  height: var(--height-footer);
+  margin: 0 auto;
+  padding: var(--padding-for-container);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+
+  li:first-child {
+    margin-right: auto;
+  }
+
+  li:last-child {
+    margin-left: auto;
+  }
+}
+
+.footer__logo a {
+  @include logo
+}
+
+.footer__link {
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: rgb(255 255 255 / 80%);
+  }
+}
+
+.footer__copy {
+  font-size: 14px;
+  opacity: 0.9;
+}

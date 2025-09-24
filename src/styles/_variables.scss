@@ -1,9 +1,18 @@
 :root {
   --primary: #0173e7;
   --white: #fff;
-
   --max-width: 1200px;
+  --min-height: 400px;
   --padding-for-container: 0 20px;
-
   --font-size-text: 15px;
+
+  // header
+  --height-top: 50px;
+  --height-bottom: 60px;
+
+  // footer
+  --height-footer: 50px;
+
+  // min-height-for-page
+  --min-height-for-page: calc(100dvh - (var(--height-top) + var(--height-bottom) + var(--height-footer)));
 }

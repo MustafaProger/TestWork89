@@ -1,5 +1,7 @@
+@import "../styles/mixins";
+
 .nf {
-  height: calc(100vh - 110px);
+  height: calc(100vh - (var(--height-top) + var(--height-bottom) + var(--height-footer)));
   display: grid;
   place-items: center;
   padding: 24px 0;
@@ -36,7 +38,7 @@
 
 .nf__text {
   margin: 0 auto 20px;
-  color: rgb(72, 72, 72);
+  color: rgb(72 72 72);
   font-size: 15px;
 }
 
@@ -47,35 +49,13 @@
   flex-wrap: wrap;
 }
 
-.nf__btn-primary,
-.nf__btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 42px;
-  padding: 0 16px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  transition:
-    transform 0.2s ease,
-    color 0.2s ease,
-    background-color 0.2s ease,
-    border-color 0.2s ease;
-}
-
 .nf__btn-primary {
-  background: var(--primary);
-  color: var(--white);
+  @include button;
 }
 
-.nf__btn-primary:hover {
-  transform: translateY(-3px);
-}
 
 @media (prefers-reduced-motion: reduce) {
-  .nf__btn-primary,
-  .nf__btn-ghost {
+  .nf__btn-primary {
     transition: none;
   }
 }

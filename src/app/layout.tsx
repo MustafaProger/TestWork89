@@ -1,8 +1,8 @@
-
 import Header from "@/components/Header/Header";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import './globals.scss'
+import "./globals.scss";
+import { Footer } from "@/components/Footer/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -23,7 +23,10 @@ export default function RootLayout({
     <html lang="ru" className={montserrat.className}>
       <body>
         <Header />
-        <div className="container" style={{paddingTop: 110}}>{children}</div>
+        <div className="container" style={{ paddingTop: 110 }}>
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );

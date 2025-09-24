@@ -8,14 +8,14 @@ export default function ProductCard({ product }: Props) {
   const img = product.thumbnail ?? "/placeholder.png";
 
   return (
-    <div className={styles.card}>
-      <div className={styles.thumbnail}>
+    <div className={styles.product__wrapper}>
+      <div className={styles.product__thumbnail}>
         <Image width={300} height={300} src={img} alt={product.title} />
       </div>
-      <div className={styles.info}>
-        <h3 className={styles.title}>{product.title}</h3>
-        <p className={styles.category}>{product.category}</p>
-        <p className={styles.price}>${product.price.toFixed(2)}</p>
+      <div className={styles.product__info}>
+        <h3 className={styles.product__title}>{product.title}</h3>
+        <p className={styles.product__category}>{product.category}</p>
+        <p className={styles.product__price}>${product.price.toFixed(2)}</p>
       </div>
     </div>
   );
