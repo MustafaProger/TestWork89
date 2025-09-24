@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { ProductCard } from "./ProductCard";
-import { Product } from "@/types/types";
-import { getProducts } from "@/entities/product/api";
+import { Product } from "@/types/product";
+import { getProducts } from "@/services/product";
 import Loading from "../Loading/Loading";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import ErrorMessage from "../Error/Error";
 
-export function ProductsContainer() {
+export default function ProductList() {
   const [limit] = useState<number>(12);
   const [select] = useState<string[]>(["id", "title", "category", "price", "thumbnail"]);
 

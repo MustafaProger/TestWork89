@@ -1,5 +1,5 @@
-import { Product } from "@/types/types";
-import { api } from "../../shared/api/client";
+import { Product } from "@/types/product";
+import { api } from "./http";
 
 type GetProductsParams = {
   limit?: number;

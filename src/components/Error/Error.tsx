@@ -1,7 +1,7 @@
 import { AlertCircle } from "lucide-react";
-import styles from "./ErrorMessage.module.scss";
+import styles from "./Error.module.scss";
 
-const ErrorMessage = () => {
+export default function Error() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.box}>
@@ -11,6 +11,4 @@ const ErrorMessage = () => {
       </div>
     </div>
   );
-};
-
-export default ErrorMessage;
+}

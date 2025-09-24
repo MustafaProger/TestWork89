@@ -1,9 +1,9 @@
-import { ProductsContainer } from "@/components/ProductCard/ProductCardContainer";
+import ProductList from "@/components/ProductCard/ProductList";
 
 export default function Home() {
   return (
     <div>
-      <ProductsContainer />
+      <ProductList />
     </div>
   );
 }
