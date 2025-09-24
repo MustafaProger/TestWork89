@@ -4,7 +4,7 @@ import { Product } from "@/types/product";
 
 type Props = { product: Product };
 
-export function ProductCard({ product }: Props) {
+export default function ProductCard({ product }: Props) {
   const img = product.thumbnail ?? "/placeholder.png";
 
   return (

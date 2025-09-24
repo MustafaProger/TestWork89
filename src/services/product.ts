@@ -1,10 +1,6 @@
 import { Product } from "@/types/product";
 import { api } from "./http";
-
-type GetProductsParams = {
-  limit?: number;
-  select?: string[];
-};
+import { LimitSelect } from "@/types/limitSelect";
 
 type GetProductsResponse = {
   products: Product[];
@@ -13,7 +9,7 @@ type GetProductsResponse = {
   total: number;
 };
 
-export async function getProducts(params: GetProductsParams) {
+export async function getProducts(params: LimitSelect) {
   const { limit, select } = params;
 
   const query = {

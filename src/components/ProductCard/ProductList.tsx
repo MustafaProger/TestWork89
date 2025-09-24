@@ -1,15 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ProductCard } from "./ProductCard";
-import { Product } from "@/types/product";
-import { getProducts } from "@/services/product";
+import ProductCard from "./ProductCard";
 import Loading from "../Loading/Loading";
 import ErrorMessage from "../Error/Error";
+import { getProducts } from "@/services/product";
+import { Product } from "@/types/product";
+import { useProductListStore } from "@/store/productList.store";
 
 export default function ProductList() {
-  const [limit] = useState<number>(12);
-  const [select] = useState<string[]>(["id", "title", "category", "price", "thumbnail"]);
+  const limit = useProductListStore((s) => s.limit);
+  const select = useProductListStore((s) => s.select);
 
   const [products, setProducts] = useState<Product[]>();
   const [loading, setLoading] = useState<boolean>(true);
