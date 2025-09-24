@@ -49,10 +49,9 @@
   flex-wrap: wrap;
 }
 
-.nf__btn-primary {
+.nf__btn {
   @include button;
 }
-
 
 @media (prefers-reduced-motion: reduce) {
   .nf__btn-primary {

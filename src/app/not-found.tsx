@@ -13,7 +13,7 @@ export default function NotFound() {
           <strong> coming soon!</strong>
         </p>
         <div className={styles["nf__actions"]}>
-          <Link href="/" className={styles["nf__btn-primary"]}>
+          <Link href="/" className={styles["nf__btn"]}>
             Home
           </Link>
         </div>
