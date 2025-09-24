@@ -23,7 +23,7 @@ export function Footer() {
             Privacy Policy
           </Link>
         </li>
-        <li className={styles.footer__copy}>© {new Date().getFullYear()} MyShop</li>
+        <li className={styles.footer__copy}>© {new Date().getFullYear()} AbeloHost Shop</li>
       </ul>
     </footer>
   );
