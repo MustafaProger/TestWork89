@@ -6,19 +6,30 @@
   margin: 0;
 }
 
+p,
+a,
+li,
+input,
+textarea,
+select,
+button {
+  font-size: var(--font-size-text);
+  line-height: var(--line-height-text);
+}
+
 a {
   color: inherit;
   text-decoration: none;
-  font-size: var(--font-size-text);
-}
-
-li {
-  font-size: var(--font-size-text);
 }
 
 .container {
   max-width: var(--max-width);
   min-height: var(--min-height);
+  height: 100%;
   padding: var(--padding-for-container);
   margin: 0 auto;
+
+  @media (max-width: $bp-md) {
+    padding: 20px 10px;
+  }
 }

@@ -4,7 +4,8 @@
   --max-width: 1200px;
   --min-height: 400px;
   --padding-for-container: 0 20px;
-  --font-size-text: 15px;
+  --font-size-text: 16px;
+  --line-height-text: 30px;
 
   // header
   --height-top: 50px;
@@ -14,5 +15,12 @@
   --height-footer: 50px;
 
   // min-height-for-page
-  --min-height-for-page: calc(100dvh - (var(--height-top) + var(--height-bottom) + var(--height-footer)));
+  --min-height-for-page: calc(
+    100dvh - (var(--height-top) + var(--height-bottom) + var(--height-footer))
+  );
 }
+
+// break-points
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;

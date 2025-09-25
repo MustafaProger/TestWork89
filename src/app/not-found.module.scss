@@ -1,7 +1,7 @@
 @import "../styles/mixins";
 
 .nf {
-  height: calc(100vh - (var(--height-top) + var(--height-bottom) + var(--height-footer)));
+  min-height: calc(100vh - (var(--height-top) + var(--height-bottom) + var(--height-footer)));
   display: grid;
   place-items: center;
   padding: 24px 0;

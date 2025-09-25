@@ -65,7 +65,6 @@ export default function ProductList() {
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
         gap: "24px",
-        padding: "20px",
         width: "100%",
         maxWidth: "var(--max-width)",
         margin: "0 auto",

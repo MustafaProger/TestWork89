@@ -1,7 +1,6 @@
 import Image from "next/image";
 import styles from "./ProductCard.module.scss";
 import { Product } from "@/types/product";
-import { useActionState } from "react";
 import { useAuthStore } from "@/store/auth.store";
 
 type Props = { product: Product };

@@ -23,7 +23,10 @@ export default function RootLayout({
     <html lang="ru" className={montserrat.className}>
       <body>
         <Header />
-        <div className="container" style={{ paddingTop: 110 }}>
+        <div
+          className="container"
+          style={{ paddingTop: "calc(var(--height-top) + var(--height-bottom))" }}
+        >
           {children}
         </div>
         <Footer />
