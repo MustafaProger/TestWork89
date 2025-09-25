@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## AbeloHost Shop (тестовое задание) ✨
 
-## Getting Started
+Приложение на Next.js (App Router), использующее публичный API DummyJSON для авторизации (JWT) и отображения списка товаров с индикацией загрузки и ошибок. Состояние — Zustand, запросы — TanStack Query, стили — SCSS-модули. 🛠️
 
-First, run the development server:
+### Возможности 🚀
+- Вход по JWT на `https://dummyjson.com/auth/login` с валидацией (минимум 3 символа)
+- Персистентная авторизация (Zustand + localStorage)
+- Список товаров (12 шт.) с `https://dummyjson.com/products`
+- Карточка товара: изображение, название, категория, цена; кнопка «Add to cart» только для авторизованных
+- Header: Login или Имя Фамилия; Footer: текущий год и «Logged as {email}» при входе
 
+### Технологии 🧰
+- Next.js 15, React 19, TypeScript
+- Zustand, TanStack React Query, Axios
+- SCSS Modules
+- ESLint, Prettier, Stylelint
+
+### Требования 🔧
+- Node.js 18+ (рекомендовано 20+)
+- npm (или pnpm/yarn/bun)
+
+### Быстрый старт 🏁
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# откройте http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Скрипты 📜
+```bash
+# dev-сервер (Turbopack)
+npm run dev
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# продакшн-сборка и запуск
+npm run build
+npm start
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# линтинг TypeScript/JS
+npm run lint
 
-## Learn More
+# форматирование Prettier
+npm run format
 
-To learn more about Next.js, take a look at the following resources:
+# линтинг стилей (SCSS/CSS)
+npm run lint:styles
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Структура проекта 🗂️
+```
+src/
+  app/                # App Router: страницы, layout, провайдеры
+  components/         # Компоненты UI (Header, Footer, ProductCard и т.д.)
+  hooks/              # Кастомные хуки
+  services/           # axios-инстанс и вызовы API
+  store/              # Zustand сторы (auth, product list)
+  styles/             # глобальные переменные и миксины
+  types/              # Типы TS для API
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### API 📡
+- База: `https://dummyjson.com`
+- Авторизация: `POST /auth/login` c телом `{ username, password, expiresInMins? }`
+- Товары: `GET /products?limit=12&select=id,title,category,price,thumbnail`
 
-## Deploy on Vercel
+#### Демо-аккаунты DummyJSON 🔑
+Можно использовать тестовые креды из документации DummyJSON, например:
+```json
+{
+  "username": "emilys",
+  "password": "emilyspass"
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Детали реализации 🧩
+- Auth-store сохраняет `user`, `accessToken` и статус; есть защита от мигания UI при гидратации
+- Токены сохраняются, но не подставляются в заголовки по умолчанию (эндпоинт товаров публичный)
+- Используются только иконки MUI; UI-компоненты MUI не применяются
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Адаптивность и доступность 📱
+- Адаптивная сетка для списка товаров
+- Управление формой с клавиатуры; видимые состояния загрузки/блокировки
