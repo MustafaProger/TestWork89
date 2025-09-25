@@ -5,18 +5,26 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./Profile.module.scss";
 import { useAuthStore } from "@/store/auth.store";
+import useAuthReady from "@/hooks/useAuthReady";
 
 export default function ProfilePage() {
   const router = useRouter();
+
   const status = useAuthStore((s) => s.status);
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
 
-  useEffect(() => {
-    if (status !== "authenticated") router.replace("/login");
-  }, [status, router]);
+  const { isHydrated, isAuthed } = useAuthReady();
 
-  if (status !== "authenticated" || !user) return null;
+  useEffect(() => {
+    if (!isHydrated) return;
+    if (!isAuthed) router.replace("/login");
+  }, [isHydrated, status, router]);
+
+  if (!user) return null;
+
+  if (!isHydrated) return null;
+  if (!isAuthed) return null;
 
   const avatar = user.image || "/globe.svg";
 
