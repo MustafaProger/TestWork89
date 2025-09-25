@@ -1,7 +1,15 @@
+"use client";
+
 import { LimitSelect } from "@/types/limitSelect";
 import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
-export const useProductListStore = create<LimitSelect>(() => ({
-  limit: 12,
-  select: ["id", "title", "category", "price", "thumbnail"],
-}));
+export const useProductListStore = create<LimitSelect>()(
+  devtools(
+    () => ({
+      limit: 12,
+      select: ["id", "title", "category", "price", "thumbnail"],
+    }),
+    { name: "product-list-store" },
+  ),
+);
