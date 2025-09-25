@@ -1,4 +1,5 @@
 @import "@/styles/mixins";
+@import "@/styles/variables";
 
 .profile {
   min-height: var(--min-height-for-page);
@@ -9,7 +10,6 @@
   &__container {
     width: 100%;
     max-width: var(--max-width);
-    padding: var(--padding-for-container);
   }
 
   &__card {
@@ -22,6 +22,9 @@
     padding: 32px 24px;
     text-align: center;
     box-shadow: 0 6px 18px rgb(0 0 0 / 5%);
+    @media screen and (max-width: $bp-md) {
+      padding: 20px 10px;
+    }
   }
 
   &__avatar {
