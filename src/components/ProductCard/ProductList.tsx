@@ -1,48 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import Loading from "../Loading/Loading";
 import ErrorMessage from "../Error/Error";
 import { getProducts } from "@/services/product";
-import { Product } from "@/types/product";
 import { useProductListStore } from "@/store/productList.store";
+import { useQuery, keepPreviousData } from "@tanstack/react-query";
 
 export default function ProductList() {
   const limit = useProductListStore((s) => s.limit);
   const select = useProductListStore((s) => s.select);
 
-  const [products, setProducts] = useState<Product[]>();
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<boolean>(false);
+  const { data, isError, isLoading } = useQuery({
+    queryKey: ["products", { limit, select }],
+    queryFn: () => getProducts({ limit, select }),
+    staleTime: 30 * 60 * 1000,
+    placeholderData: keepPreviousData,
+  });
 
-  useEffect(() => {
-    async function load() {
-      try {
-        setLoading(true);
-        setError(false);
+  if (isLoading) return <Loading />;
 
-        const { products } = await getProducts({ limit, select });
-        setProducts(products);
-      } catch {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
+  if (isError) return <ErrorMessage />;
 
-    load();
-  }, [limit, select]);
-
-  if (loading) {
-    return <Loading />;
-  }
-
-  if (error) {
-    return <ErrorMessage />;
-  }
-
-  if (!products?.length) {
+  if (!data?.products?.length) {
     return (
       <div
         style={{
@@ -71,7 +51,7 @@ export default function ProductList() {
         margin: "0 auto",
       }}
     >
-      {products.map((p) => (
+      {data?.products.map((p) => (
         <ProductCard key={p.id} product={p} />
       ))}
     </div>

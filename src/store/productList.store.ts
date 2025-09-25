@@ -2,7 +2,7 @@
 
 import { LimitSelect } from "@/types/limitSelect";
 import { create } from "zustand";
-import { devtools, persist, createJSONStorage } from "zustand/middleware";
+import { devtools } from "zustand/middleware";
 
 export const useProductListStore = create<LimitSelect>()(
   devtools(

@@ -1,9 +1,10 @@
 import ProductList from "@/components/ProductCard/ProductList";
+import QueryProvider from "./providers/QueryProvider";
 
 export default function Home() {
   return (
-    <div>
+    <QueryProvider>
       <ProductList />
-    </div>
+    </QueryProvider>
   );
 }
