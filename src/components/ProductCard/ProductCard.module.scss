@@ -1,3 +1,5 @@
+@import "@styles/mixins";
+
 .product__wrapper {
   display: flex;
   flex-direction: column;
@@ -18,7 +20,6 @@
 
 .product__thumbnail {
   width: 100%;
-  aspect-ratio: 1 / 1;
   background: #f9f9f9;
 
   img {
@@ -29,10 +30,11 @@
 }
 
 .product__info {
-  padding: 12px;
+  height: 100%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 
 .product__title {
@@ -50,4 +52,11 @@
   font-size: 15px;
   font-weight: bold;
   color: var(--primary);
+}
+
+.product__btn {
+  @include button;
+
+  margin: auto 0 0 auto;
+  width: 120px;
 }

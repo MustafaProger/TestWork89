@@ -10,18 +10,8 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonIcon from "@mui/icons-material/Person";
 
 import type { HeaderTopLinks, HeaderBottomLinks } from "./types";
-
-const headerTopLinks: HeaderTopLinks[] = [
-  { kind: "tel", icon: <PhoneIcon />, text: "+7 777 777 777", href: "tel:+7777777777" },
-  {
-    kind: "mail",
-    icon: <EmailIcon />,
-    text: "example@gmail.com",
-    href: "mailto:example@gmail.com",
-  },
-  { kind: "address", icon: <LocationOnIcon />, text: "Street 12, house 3", href: "/contacts" },
-  { kind: "login", icon: <PersonIcon />, text: "Login", href: "/login" },
-];
+import { useAuthStore } from "@/store/auth.store";
+import { useMemo } from "react";
 
 const headerBottomLinks: HeaderBottomLinks[] = [
   { label: "Home", href: "/" },
@@ -35,12 +25,41 @@ const headerBottomLinks: HeaderBottomLinks[] = [
 export default function Header() {
   const pathname = usePathname();
 
+  const status = useAuthStore((s) => s.status);
+  const user = useAuthStore((s) => s.user);
+
+  const baseTopLinks = useMemo(
+    () => [
+      { kind: "tel", icon: <PhoneIcon />, text: "+7 777 777 777", href: "tel:+7777777777" },
+      {
+        kind: "mail",
+        icon: <EmailIcon />,
+        text: "example@gmail.com",
+        href: "mailto:example@gmail.com",
+      },
+      { kind: "address", icon: <LocationOnIcon />, text: "Street 12, house 3", href: "/contacts" },
+    ],
+    [],
+  );
+
+  const authLink =
+    status === "authenticated"
+      ? {
+          kind: "profile",
+          icon: <PersonIcon />,
+          text: user ? `${user.firstName} ${user.lastName}` : "Profile",
+          href: "/profile",
+        }
+      : { kind: "login", icon: <PersonIcon />, text: "Login", href: "/login" };
+
+  const headerTopLinks = [...baseTopLinks, authLink];
+
   return (
     <header className={styles.header}>
       <div className={styles["header__top"]}>
         <ul className={styles["header__links--top"]}>
-          {headerTopLinks.map(({ icon, text, href }, i) => (
-            <li key={i} className={styles["header__link"]}>
+          {headerTopLinks.map(({ kind, icon, text, href }) => (
+            <li key={kind} className={styles["header__link"]}>
               <Link href={href} className={styles["header__link-anchor"]}>
                 <span className={styles["header__link-icon"]}>{icon}</span>
                 <span className={styles["header__link-text"]}>{text}</span>

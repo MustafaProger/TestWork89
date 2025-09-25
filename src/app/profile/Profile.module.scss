@@ -1,0 +1,81 @@
+@import "@/styles/mixins";
+
+.profile {
+  min-height: var(--min-height-for-page);
+  display: grid;
+  place-items: center;
+  padding: 40px 0;
+
+  &__container {
+    width: 100%;
+    max-width: var(--max-width);
+    padding: var(--padding-for-container);
+  }
+
+  &__card {
+    margin: 0 auto;
+    max-width: 560px;
+    width: 100%;
+    background: var(--white);
+    border: 1px solid #e8e8e8;
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgb(0 0 0 / 5%);
+  }
+
+  &__avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #eef4ff;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__title {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 800;
+  }
+
+  &__list {
+    margin: 0 auto 20px;
+    padding: 0;
+    list-style: none;
+    font-size: var(--font-size-text);
+    color: #3d4a5c;
+  }
+
+  &__item {
+    margin: 6px 0;
+  }
+
+  &__label {
+    color: #6b7684;
+    margin-right: 6px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* кнопка в стиле проекта + модификатор danger */
+.btn {
+  @include button;
+
+  &--danger {
+    background: #ef4444;
+  }
+}
